@@ -157,7 +157,7 @@ hits the Google API (one call per question).
 Built by Martin Blomqvist during the Data Scientist program at EC Utbildning 2025.
 
 - [LinkedIn](https://www.linkedin.com/in/martin-blomqvist)
-- [GitHub](https://github.com/rabakrabb)
+- [GitHub](https://github.com/MartinBlomqvistDev)
 """)
 
 
