@@ -58,6 +58,7 @@ def generate_response(
     system_prompt = (
         f"You answer questions about Ableton Live 12 and MIDI. {lang} "
         "Base your answer on the context below — do not invent facts not found there. "
+        "Be concise: cover the key points, do not list every method or exhaust every detail. "
         "If the context directly answers the question, give a short, direct answer. "
         "If the context only partly covers it, use what is there and point toward the relevant part of the manual for more detail. "
         f"Only say '{no_answer}' if the context has nothing to do with the question."
