@@ -1,0 +1,24 @@
+# Environment
+.env
+
+# Virtual environment
+chatbot/
+
+# Data (large files — regenerate with pipeline scripts)
+data/Ableton_12_manual.pdf
+data/full_manual_text.txt
+data/chunks.jsonl
+
+# index/ is committed so Streamlit Cloud can load it without running the pipeline
+
+# IDE & tooling
+.vscode/
+.devcontainer/
+.claude/
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+
+# Scratch / diagnostic scripts
+check_models.py
+semantic_search.py
