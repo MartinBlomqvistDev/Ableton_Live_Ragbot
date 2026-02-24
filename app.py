@@ -22,7 +22,7 @@ from config import (
     NO_ANSWER_SV,
 )
 from core.embeddings import create_embeddings
-from core.llm import generate_response
+from core.llm import generate_response, translate_to_english
 from core.vector_store import VectorStore
 
 st.set_page_config(
@@ -135,7 +135,8 @@ if page == "Chatbot":
     query = st.text_input("Ask your question:")
     if query:
         with st.spinner("Searching..."):
-            query_emb = create_embeddings([query])[0]
+            search_query = translate_to_english(query) if answer_language == "Swedish" else query
+            query_emb = create_embeddings([search_query])[0]
             results = vector_store.search(query_emb, k=CHATBOT_TOP_K)
             top_texts = [r["text"] for r in results]
             answer = generate_response(query, top_texts, answer_language=answer_language)
@@ -269,7 +270,8 @@ elif page == "Evaluation":
         with st.spinner("Evaluating..."):
             no_answer_phrase = NO_ANSWER_EN if answer_language == "English" else NO_ANSWER_SV
 
-            query_emb = create_embeddings([question])[0]
+            search_question = translate_to_english(question) if answer_language == "Swedish" else question
+            query_emb = create_embeddings([search_question])[0]
             results = vector_store.search(query_emb, k=EVALUATION_TOP_K)
             top_texts = [r["text"] for r in results]
             model_answer = generate_response(question, top_texts, answer_language=answer_language)

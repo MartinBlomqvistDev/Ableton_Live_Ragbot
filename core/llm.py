@@ -20,6 +20,26 @@ def _get_client() -> genai.Client:
     return _client
 
 
+def translate_to_english(text: str, model_name: str = GENERATION_MODEL) -> str:
+    """Translate text to English for retrieval. Falls back to original on error."""
+    try:
+        response = _get_client().models.generate_content(
+            model=model_name,
+            config=types.GenerateContentConfig(
+                system_instruction=(
+                    "Translate the following text to English. "
+                    "Output only the translation, nothing else."
+                ),
+                max_output_tokens=256,
+            ),
+            contents=text,
+        )
+        return response.text.strip()
+    except Exception as e:
+        logger.warning("Translation failed, using original query: %s", e)
+        return text
+
+
 def generate_response(
     query: str,
     context: str | List[str],
