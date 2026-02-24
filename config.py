@@ -10,7 +10,7 @@ EMBEDDINGS_PATH  = INDEX_DIR / "embeddings.parquet"
 
 # --- Model config ---
 EMBEDDING_MODEL   = "all-mpnet-base-v2"   # local sentence-transformers, ~420 MB
-GENERATION_MODEL  = "gemini-2.0-flash"
+GENERATION_MODEL  = "gemini-2.5-flash"
 MAX_OUTPUT_TOKENS = 1000
 
 # --- Pipeline ---
